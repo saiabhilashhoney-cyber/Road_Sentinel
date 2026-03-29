@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Road Sentinel Traffic Rules</title>
+    <link rel="stylesheet" href="/assets/css/styles.css" />
+  </head>
+  <body>
+    <div class="app">
+      <aside class="sidebar">
+        <h1>Road Sentinel</h1>
+        <p class="muted">Traffic Violation Detection</p>
+        <nav>
+          <a href="/">Home</a>
+          <a href="/dashboard">Dashboard</a>
+          <a class="active" href="/rules">Rules & Fines</a>
+        </nav>
+        <button id="themeToggle" class="btn secondary">Switch Display Theme</button>
+      </aside>
+
+      <main class="content">
+        <section class="card">
+          <h2>Official Traffic Rules & Fines</h2>
+          <p class="muted">Standardized penalty structure enforced by Road Sentinel AI.</p>
+          
+          <div class="table-wrap" style="margin-top: 20px;">
+            <table>
+              <thead>
+                <tr>
+                  <th>Violation Type</th>
+                  <th>Section/Act</th>
+                  <th>First Offense Fine</th>
+                  <th>Repeat Offense Fine</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Riding without a Helmet</td>
+                  <td>129/177 MVA</td>
+                  <td style="color:var(--danger)">₹1,000 + License Suspended (3 months)</td>
+                  <td style="color:var(--danger)">₹2,000</td>
+                </tr>
+                <tr>
+                  <td>Over-speeding</td>
+                  <td>112/183 MVA</td>
+                  <td style="color:var(--danger)">₹1,000 - ₹2,000</td>
+                  <td style="color:var(--danger)">Impounding of Vehicle</td>
+                </tr>
+                <tr>
+                  <td>Driving without License</td>
+                  <td>3/181 MVA</td>
+                  <td style="color:var(--danger)">₹5,000</td>
+                  <td style="color:var(--danger)">₹10,000</td>
+                </tr>
+                <tr>
+                  <td>Triples on Two-Wheeler</td>
+                  <td>128/177 MVA</td>
+                  <td style="color:var(--danger)">₹1,000</td>
+                  <td style="color:var(--danger)">₹2,000</td>
+                </tr>
+                <tr>
+                  <td>Defective Number Plate (UNREADABLE)</td>
+                  <td>50/177 MVA</td>
+                  <td style="color:var(--danger)">₹5,000</td>
+                  <td style="color:var(--danger)">₹10,000</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <!-- Theme toggle logic for the static rules page -->
+    <script>
+      const themeToggle = document.getElementById("themeToggle");
+      function setThemeFromStorage() {
+        if (localStorage.getItem("theme") === "light") {
+          document.body.classList.add("light");
+        }
+      }
+      themeToggle?.addEventListener("click", () => {
+        document.body.classList.toggle("light");
+        localStorage.setItem("theme", document.body.classList.contains("light") ? "light" : "dark");
+      });
+      setThemeFromStorage();
+    </script>
+  </body>
+</html>

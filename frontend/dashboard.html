@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Road Sentinel Dashboard</title>
+    <link rel="stylesheet" href="/assets/css/styles.css" />
+  </head>
+  <body>
+    <div class="app">
+      <aside class="sidebar">
+        <h1>🚔 Road Sentinel</h1>
+        <p class="muted">Admin Panel</p>
+        <nav>
+          <a href="/">Home</a>
+          <a class="active" href="/dashboard">Dashboard</a>
+          <a href="/rules">Rules & Fines</a>
+        </nav>
+        <button id="themeToggle" class="btn secondary">Switch Display Theme</button>
+      </aside>
+
+      <main class="content">
+        <section class="card">
+          <h2>Time-Based Insights (Violations)</h2>
+          <div class="chart-container">
+            <canvas id="analyticsChart"></canvas>
+          </div>
+        </section>
+
+        <section class="card">
+          <h2>Violation Records</h2>
+          <div class="toolbar">
+            <input id="searchInput" placeholder="Search plate number..." />
+            <select id="filterSelect">
+              <option value="all">All</option>
+              <option value="violations">Violations only</option>
+            </select>
+            <button id="exportBtn" class="btn secondary">Export CSV</button>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Case ID</th>
+                  <th>Plate Number</th>
+                  <th>Date & Time</th>
+                  <th>Risk Level</th>
+                  <th>Status</th>
+                  <th>Fine Mgmt</th>
+                  <th>Evidence</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="recordsBody"></tbody>
+            </table>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <dialog id="evidenceDialog">
+      <div class="dialog-head">
+        <h3>Evidence View</h3>
+        <button id="closeDialog" class="btn secondary">Close</button>
+      </div>
+      <div id="evidenceContent" class="evidence-grid"></div>
+    </dialog>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="/assets/js/dashboard.js"></script>
+  </body>
+</html>
