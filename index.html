@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Road Sentinel</title>
+    <link rel="stylesheet" href="/assets/css/styles.css" />
+  </head>
+  <body>
+    <div class="app">
+      <aside class="sidebar">
+        <h1>🚔 Road Sentinel</h1>
+        <p class="muted">Traffic Violation Detection</p>
+        <nav>
+          <a class="active" href="/">Home</a>
+          <a href="/dashboard">Dashboard</a>
+          <a href="/rules">Rules & Fines</a>
+        </nav>
+        <button id="themeToggle" class="btn secondary">Switch Display Theme</button>
+      </aside>
+
+      <main class="content">
+        <section class="card">
+          <h2>Upload Image or Video</h2>
+          <p class="muted">Drag and drop or click to upload.</p>
+          <div id="dropZone" class="drop-zone">
+            <input id="mediaInput" type="file" accept="image/*,video/*" hidden />
+            <span>Drop file here or click to authenticate & browse</span>
+          </div>
+          
+          <button id="processBtn" class="btn">Process with Computer Vision</button>
+          <div id="loading" class="loading hidden">Processing with Computer Vision...</div>
+        </section>
+
+        <section id="results" class="grid hidden">
+          <div class="card">
+            <h3>Original</h3>
+            <div id="originalContainer"></div>
+          </div>
+          <div class="card">
+            <h3>Processed Output</h3>
+            <div id="annotatedContainer"></div>
+          </div>
+          <div class="card">
+            <h3>Plate Crop</h3>
+            <div id="plateContainer"></div>
+          </div>
+          <div class="card">
+            <h3>OCR Result</h3>
+            <p id="ocrText" class="ocr">-</p>
+          </div>
+        </section>
+
+        <section id="violationCard" class="card hidden"></section>
+      </main>
+    </div>
+
+    <!-- Login Modal -->
+    <div id="loginOverlay" class="login-overlay">
+      <div class="login-box">
+        <h2>Admin Gateway</h2>
+        <input type="text" id="username" placeholder="Username (admin)" />
+        <input type="password" id="password" placeholder="Password (admin)" />
+        <button id="loginBtn" class="btn">Authenticate to Upload</button>
+        <div id="loginError" class="muted" style="color:var(--danger); margin-top:10px; display:none;">Invalid credentials</div>
+      </div>
+    </div>
+
+    <!-- Toast Container -->
+    <div id="toastContainer" class="toast-container"></div>
+
+    <script src="/assets/js/app.js"></script>
+  </body>
+</html>
